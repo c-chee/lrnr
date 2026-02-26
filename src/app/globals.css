@@ -22,6 +22,10 @@
   =========================== */
   --background: var(--white);
   --text-color: var(--midnight-violet);
+
+  /* Pill Button */
+  --button-bg: var(--midnight-violet);
+  --button-text: var(--white);
 }
 
 /* Automatically switches if user's OS is dark */
@@ -32,6 +36,10 @@
     =========================== */
     --background: var(--carbon-black);
     --text-color: var(--white);
+
+    /* Pill Button */
+    --button-bg: var(--periwinkle);
+    --button-text: var(--midnight-violet);
   }
 }
 
