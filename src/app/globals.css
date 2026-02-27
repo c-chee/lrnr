@@ -23,6 +23,9 @@
   --background: var(--white);
   --text-color: var(--midnight-violet);
 
+  /* Footer */
+  --footer-bg: var(--midnight-violet);
+
   /* Pill Button */
   --button-bg: var(--midnight-violet);
   --button-text: var(--white);
@@ -36,6 +39,9 @@
     =========================== */
     --background: var(--carbon-black);
     --text-color: var(--white);
+
+    /* Footer */
+    --footer-bg: var(--periwinkle);
 
     /* Pill Button */
     --button-bg: var(--periwinkle);
