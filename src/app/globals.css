@@ -23,12 +23,9 @@
   --background: var(--white);
   --text-color: var(--midnight-violet);
 
-<<<<<<< HEAD
   /* Footer */
   --footer-bg: var(--midnight-violet);
 
-=======
->>>>>>> 3b3abc9 (Navigations (#3))
   /* Pill Button */
   --button-bg: var(--midnight-violet);
   --button-text: var(--white);
@@ -43,12 +40,9 @@
     --background: var(--carbon-black);
     --text-color: var(--white);
 
-<<<<<<< HEAD
     /* Footer */
     --footer-bg: var(--periwinkle);
 
-=======
->>>>>>> 3b3abc9 (Navigations (#3))
     /* Pill Button */
     --button-bg: var(--periwinkle);
     --button-text: var(--midnight-violet);
