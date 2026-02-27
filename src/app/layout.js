@@ -3,7 +3,7 @@ import './globals.css';
 
 // ===  Components ===
 import Navbar from '@/components/layout/Navbar';
-// import Footer from '@/components/layout/Footer';
+import Footer from '@/components/layout/Footer';
 
 // === Fonts === 
 const workSans = Work_Sans({
@@ -26,7 +26,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={`${workSans.className} antialiased flex flex-col max-w-screen-lg min-h-screen`}>
+      <body className={`${workSans.className} antialiased flex flex-col max-w-screen min-h-screen`}>
 
         <Navbar />
 
@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
           {children}
         </main>
 
-        {/* <Footer /> */}
+        <Footer />
         
       </body>
     </html>

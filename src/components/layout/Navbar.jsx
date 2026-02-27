@@ -10,7 +10,7 @@ export default function Navbar() {
 
     return (
         <header>
-            <nav className='fixed flex justify-between place-items-center w-full top-0 z-50 px-6 md:px-15 lg:px-18 py-6'>
+            <nav className='fixed flex justify-between place-items-center w-full top-0 z-50 px-6 md:px-15 lg:px-18 py-6 bg-[var(--background)]'>
                 {/* --- Logo --- */}
                 <div>
                     {/* Light theme title */}
