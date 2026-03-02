@@ -9,7 +9,7 @@ export default function LoginForm() {
     // === States ===
     // To hold the values typed into form
     const [form, setForm] = useState({
-        email: '',
+        identifier: '', // username OR email
         password: '',
     });
 
@@ -30,6 +30,7 @@ export default function LoginForm() {
         setErrors((prev) => ({
             ...prev,
             [name]: '',
+            general: '',
         }));
     }
 
@@ -41,7 +42,7 @@ export default function LoginForm() {
         const newErrors = {};
 
         // Frontend validation
-        if (!form.email) newErrors.email = 'Email is required';
+        if (!form.identifier) newErrors.identifier = 'Username or Email is required';
         if (!form.password) newErrors.password = 'Password is required';
 
         // If errors exist, stop submission
@@ -51,26 +52,61 @@ export default function LoginForm() {
         }
 
         /** **************************
-         * IMPORTANT: CALL LOGIN API
-        ****************************** */
-        console.log('Submitting login:', form);
+         * LOGIN API
+         ****************************** */
+        try {
+            const res = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    identifier: form.identifier,
+                    password: form.password,
+                }),
+                cache: 'no-store',
+            });
+
+            const text = await res.text();
+            let data;
+
+            try {
+                data = JSON.parse(text);
+            } catch {
+                console.error('Expected JSON, got:', text);
+                setErrors({ general: 'Unexpected server response' });
+                return;
+            }
+
+            if (!res.ok) {
+                setErrors({ general: data.message || 'Login failed' });
+                return;
+            }
+
+            console.log('Login success:', data);
+
+            // Redirect to protected account page
+            window.location.href = '/account';
+
+        } catch (err) {
+            console.error('Login error:', err);
+            setErrors({ general: 'Something went wrong' });
+        }
     }
 
     return (
         <form
-        onSubmit={handleSubmit}
-        className='flex flex-col gap-6 w-full max-w-md p-4 items-center'
+            onSubmit={handleSubmit}
+            className='flex flex-col gap-6 w-full max-w-md p-4 items-center'
         >
 
-            {/* Email Field */}
+            {/* Username or Email Field */}
             <InputField
-                label='Email'
-                name='email'
-                type='email'
-                placeholder='example@email.com'
-                value={form.email}
+                label='Username or Email'
+                name='identifier'
+                type='text'
+                placeholder='Enter username or email'
+                value={form.identifier}
                 onChange={handleChange}
-                error={errors.email}
+                error={errors.identifier}
                 required
             />
 
@@ -86,7 +122,15 @@ export default function LoginForm() {
                 required
             />
 
-            <Button type='submit' className='max-w-[5em] hover:text-[var(--highlight)] border-[var(--highlight)] bg-[var(--highlight)]'>
+            {/* General Error Message */}
+            {errors.general && (
+                <p className="text-red-500 text-sm">{errors.general}</p>
+            )}
+
+            <Button
+                type='submit'
+                className='max-w-[5em] hover:text-[var(--highlight)] border-[var(--highlight)] bg-[var(--highlight)]'
+            >
                 Login
             </Button>
         </form>
