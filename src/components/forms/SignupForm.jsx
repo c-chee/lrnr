@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import InputField from '../ui/InputField';
-import Button from '../ui/PillButtonHollow';
+import Button from '../ui/PillButton';
 
 export default function SignupForm() {
 
@@ -63,7 +63,7 @@ export default function SignupForm() {
     return (
         <form
             onSubmit={handleSubmit}
-            className='flex flex-col gap-6 w-full max-w-md'
+            className='flex flex-col gap-6 w-full max-w-md p-4 items-center'
         >
 
             <InputField
@@ -109,7 +109,7 @@ export default function SignupForm() {
                 required
             />
 
-            <Button type='submit'>
+            <Button type='submit' className='max-w-[15em] hover:text-[var(--highlight)] border-[var(--highlight)] bg-[var(--highlight)]'>
                 Create Account
             </Button>
         </form>

@@ -12,7 +12,7 @@ export default function PillButton({
 
     const baseStyles = `
         inline-flex items-center justify-center
-        px-[10px] py-[2px] md:px-[15px] md:py-[4px]
+        px-[12px] py-[2px] md:px-[15px] md:py-[4px]
         rounded-full
         text-[15px]
         font-semibold
@@ -24,6 +24,7 @@ export default function PillButton({
         hover:text-[var(--button-bg)]
         disabled:opacity-50
         disabled:cursor-not-allowed
+        cursor-pointer
         ${className}
     `;
 

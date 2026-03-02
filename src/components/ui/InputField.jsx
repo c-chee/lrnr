@@ -38,23 +38,23 @@ export default function InputField({
                 focus:ring-2
                 ${
                     error
-                    ? "border-red-500 focus:ring-red-500"
-                    : "border-gray-300 focus:ring-[var(--button-bg)]"
+                    ? 'border-red-500 focus:ring-red-500'
+                    : 'border-[var(--text-color)] focus:ring-[var(--highlight)]'
                 }
                 `}
             />
 
             {/* Helper Text */}
             {helperText && !error && (
-                <p className="text-xs text-gray-500">
-                {helperText}
+                <p className='text-xs text-gray-500'>
+                    {helperText}
                 </p>
             )}
 
             {/* Error Text */}
             {error && (
-                <p className="text-xs text-red-500">
-                {error}
+                <p className='text-xs text-red-500'>
+                    {error}
                 </p>
             )}
         </div>
