@@ -19,8 +19,11 @@ const cormorant = Cormorant_Garamond({
 })
 
 export const metadata = {
-  title: 'LRNR',
-  description: 'Custom Quizes powered by AI',
+  title: {
+    default: 'LRNR',
+    template: '%s | LRNR',
+  },
+  description: 'Custom Quizzes powered by AI',
 };
 
 export default function RootLayout({ children }) {
