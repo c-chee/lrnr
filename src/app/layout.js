@@ -29,7 +29,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={`${workSans.className} antialiased flex flex-col max-w-screen min-h-screen`}>
+      <body className={`${workSans.className} antialiased flex flex-col min-h-screen`}>
 
         <Navbar />
 
