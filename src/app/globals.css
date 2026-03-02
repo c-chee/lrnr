@@ -29,6 +29,7 @@
   /* Pill Button */
   --button-bg: var(--midnight-violet);
   --button-text: var(--white);
+  --highlight: var(--evergreen);
 }
 
 /* Automatically switches if user's OS is dark */
@@ -46,6 +47,7 @@
     /* Pill Button */
     --button-bg: var(--periwinkle);
     --button-text: var(--midnight-violet);
+    --highlight: var(--tea-green);
   }
 }
 

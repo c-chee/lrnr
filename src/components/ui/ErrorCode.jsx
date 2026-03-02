@@ -10,7 +10,7 @@ export default function ErrorCode({
 
             <img src='/turtle_outlined.png' alt='LRNR Turtle' className='w-[14em] md:w-[18em] lg:w-[22em] pb-1'/>
 
-            <h3 className='font-semibold text-[2em] md:text[3.5em]  lg:text-[4em] pb-8'>{children}</h3>
+            <h3 className='font-semibold text-[2em] md:text-[3.5em]  lg:text-[4em] pb-8'>{children}</h3>
 
             <Button href='/'>Back to home</Button>
 
