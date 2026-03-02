@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import connection from "@/lib/db";
+import db from "@/lib/db";
 
 export async function POST(req) {
   const { username, password } = await req.json();
 
   try {
-    const [rows] = await connection
+    const [rows] = await db
       .promise()
       .query("SELECT * FROM users WHERE LOWER(username) = LOWER(?)", [username]);
 
