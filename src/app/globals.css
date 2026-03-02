@@ -28,6 +28,7 @@
 
   /* Pill Button */
   --button-bg: var(--midnight-violet);
+  --button-bg-secondary: var(--evergreen);
   --button-text: var(--white);
   --highlight: var(--evergreen);
 }
@@ -46,6 +47,7 @@
 
     /* Pill Button */
     --button-bg: var(--periwinkle);
+    --button-bg-secondary: var(--tea-green);
     --button-text: var(--midnight-violet);
     --highlight: var(--tea-green);
   }
