@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
@@ -49,3 +50,6 @@ export async function POST(req) {
     );
   }
 }
+=======
+// Login to DB route 
+>>>>>>> origin/main

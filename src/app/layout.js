@@ -19,14 +19,17 @@ const cormorant = Cormorant_Garamond({
 })
 
 export const metadata = {
-  title: 'LRNR',
-  description: 'Custom Quizes powered by AI',
+  title: {
+    default: 'LRNR',
+    template: '%s | LRNR',
+  },
+  description: 'Custom Quizzes powered by AI',
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={`${workSans.className} antialiased flex flex-col max-w-screen min-h-screen`}>
+      <body className={`${workSans.className} antialiased flex flex-col min-h-screen`}>
 
         <Navbar />
 

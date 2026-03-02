@@ -1,3 +1,7 @@
+export const metadata = {
+    title: '404',
+};
+
 import ErrorCode from '@/components/ui/ErrorCode'
 
 export default function Custom404() {

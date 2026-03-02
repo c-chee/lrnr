@@ -10,8 +10,13 @@
   },
   "dependencies": {
     "axios": "^1.13.5",
+<<<<<<< HEAD
     "bcryptjs": "^3.0.3",
+=======
+    "bcrypt": "^6.0.0",
+>>>>>>> origin/main
     "dotenv": "^17.3.1",
+    "jsonwebtoken": "^9.0.3",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3"
