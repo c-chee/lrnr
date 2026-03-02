@@ -1,6 +1,6 @@
 import Hero from '@/components/sections/Hero';
 import FAQPage from '@/components/sections/Faq';
-import UseLrnrPageCards from '@/components/sections/Cards';
+// import UseLrnrPageCards from '@/components/sections/Cards';
 
 export default function Home() {
   return (
