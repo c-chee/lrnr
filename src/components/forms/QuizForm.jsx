@@ -70,7 +70,7 @@ export default function QuizForm({ user, history }) {
     return (
         <form
             onSubmit={handleSubmit}
-            className='flex flex-col gap-6 w-full max-w-xl items-center'
+            className='flex flex-col gap-6 w-full max-w-md p-4 items-center'
         >
 
             {/* Topic */}
