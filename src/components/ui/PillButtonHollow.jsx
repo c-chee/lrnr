@@ -21,6 +21,7 @@ export default function PillButtonHollow({
         transition-all duration-500 ease-in-out
         hover:bg-[var(--button-bg)]
         hover:text-[var(--button-text)]
+        cursor-pointer
         ${className}
     `;
 

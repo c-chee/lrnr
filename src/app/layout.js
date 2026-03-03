@@ -1,7 +1,7 @@
 import { Work_Sans, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
 
-// ===  Components ===
+// === Components ===
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
@@ -10,13 +10,13 @@ const workSans = Work_Sans({
   subsets: ['latin'],
   weight: ['400','500','600','700'],
   variable: '--font-work',
-})
+});
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
   weight: ['400','500','600','700'],
   variable: '--font-cormorant',
-})
+});
 
 export const metadata = {
   title: {
@@ -33,12 +33,12 @@ export default function RootLayout({ children }) {
 
         <Navbar />
 
-        <main className='flex flex-col pt-[6em]'>
+        <main className='flex-1 flex flex-col pt-[6em]'>
           {children}
         </main>
 
-        <Footer />
-        
+        <Footer type='landing' />
+
       </body>
     </html>
   );
