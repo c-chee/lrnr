@@ -2,8 +2,7 @@ import { Work_Sans, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
 
 // === Components ===
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
+import LayoutShell from '@/components/layout/LayoutShell';
 
 // === Fonts === 
 const workSans = Work_Sans({
@@ -30,15 +29,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <body className={`${workSans.className} antialiased flex flex-col min-h-screen`}>
-
-        <Navbar />
-
-        <main className='flex-1 flex flex-col pt-[6em]'>
+        <LayoutShell>
           {children}
-        </main>
-
-        <Footer type='landing' />
-
+        </LayoutShell>
       </body>
     </html>
   );
