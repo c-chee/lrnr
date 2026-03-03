@@ -18,38 +18,40 @@ export default function AccountNavbar() {
 
     return (
         <header>
-            <nav className='fixed flex justify-between place-items-center w-full top-0 z-50 px-6 md:px-15 lg:px-18 py-6 bg-[var(--background)]'>
+            <nav className='fixed top-0 left-0 w-full z-50 bg-[var(--background)]'>
+                <div className='max-w-7xl mx-auto px-6 md:px-10 lg:px-12 py-5 flex justify-between items-center'>
                 
-                {/* === Logo === */}
-                {/* Light Theme */}
-                <div>
-                <Link href='/account' className='flex'>
-                    <img
-                    src='/lrnr_title_black.png'
-                    alt='LRNR'
-                    className='w-[6em] md:w-[7em] lg:w-[8em] block dark:hidden'
-                    />
-                </Link>
+                    {/* === Logo === */}
+                    <div>
+                        {/* Light Theme */}
+                        <Link href='/' className='flex'>
+                            <img
+                                src='/lrnr_title_black.png'
+                                alt='LRNR'
+                                className='w-[6em] md:w-[7em] lg:w-[8em] block dark:hidden'
+                            />
+                        </Link>
 
-                {/* Dark Theme */}
-                <Link href='/account' className='flex'>
-                    <img
-                    src='/lrnr_title_white.png'
-                    alt='LRNR'
-                    className='w-[6em] md:w-[7em] lg:w-[8em] hidden dark:block'
-                    />
-                </Link>
-                </div>
+                        {/* Dark Theme */}
+                        <Link href='/'>
+                            <img
+                                src='/lrnr_title_white.png'
+                                alt='LRNR'
+                                className='w-[6em] md:w-[7em] lg:w-[8em] hidden dark:block'
+                            />
+                        </Link>
+                    </div>
 
-                {/* === Links === */}
-                <div className='place-items-center'>
-                    <HollowButton href='/generate' className='mx-1 lg:mx-2'>
-                        Generate a quiz
-                    </HollowButton>
+                    {/* === Links === */}
+                    <div>
+                        <HollowButton href='/generate' className='mx-1 lg:mx-2'>
+                            Generate a quiz
+                        </HollowButton>
 
-                    <HollowButton onClick={handleLogout} className='mx-1 lg:mx-2' >
-                        Logout
-                    </HollowButton>
+                        <HollowButton onClick={handleLogout} className='mx-1 lg:mx-2' >
+                            Logout
+                        </HollowButton>
+                    </div>
                 </div>
             </nav>
         </header>
