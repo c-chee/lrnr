@@ -13,7 +13,7 @@ export default function Hero() {
         <section className='flex w-full px-6 md:px-15 lg:px-18 py-10 md:py-16 lg:py-20 justify-center items-start'>
 
             {/* === Content grid === */}
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-6xl items-center'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-5xl items-center'>
 
                 {/* Left column */}
                 <div className='text-[var(--text-color)] text-center md:text-left pt-16 md:pt-0'>
