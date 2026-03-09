@@ -12,13 +12,13 @@ const useCases = [
     title: 'Study for classes',
     description:
       'Generate quizzes for course material, test prep, and review sessions.',
-    bg: 'bg-[#657AEE]',
+    bg: 'bg-[#6B83FF]',
   },
   {
     title: 'Practice new topics',
     description:
       'Build quizzes around unfamiliar subjects and learn at your own pace.',
-    bg: 'bg-[#B2B9E8]',
+    bg: 'bg-(--periwinkle)',
   },
   {
     title: 'Prepare for exams',
@@ -30,7 +30,7 @@ const useCases = [
     title: 'Track your progress',
     description:
       'Use repeated quiz practice to strengthen weak areas over time.',
-    bg: 'bg-[#E6E1EA]',
+    bg: 'bg-(--lavender-mist)',
   },
 ];
 
