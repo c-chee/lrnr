@@ -4,12 +4,21 @@ import jwt from "jsonwebtoken";
 import db from "@/lib/db";
 
 export async function POST(req) {
-  const { username, password } = await req.json();
-
   try {
-    const [rows] = await db
-      .promise()
-      .query("SELECT * FROM users WHERE LOWER(username) = LOWER(?)", [username]);
+    const { identifier, password } = await req.json();
+
+  if (!identifier || !password) {
+    return NextResponse.json({ message: "Missing fields" }, { status: 400 });
+  }
+
+  const [rows] = await db
+    .promise()
+    .query(
+      `SELECT * FROM users 
+      WHERE LOWER(username) = LOWER(?) 
+      OR LOWER(email) = LOWER(?)`,
+      [identifier, identifier]
+    );
 
     if (rows.length === 0) {
       return NextResponse.json({ message: "Invalid credentials" }, { status: 401 });

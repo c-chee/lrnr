@@ -10,7 +10,7 @@ export default function SignupForm() {
     // Form input values
     const [form, setForm] = useState({
         fname: '', // First name
-        nlame: '', // Last name
+        lname: '', // Last name
         email: '',
         password: '',
     });
@@ -42,8 +42,8 @@ export default function SignupForm() {
 
         const newErrors = {};
 
-        if (!form.fname) newErrors.name = 'First name is required';
-        if (!form.lname) newErrors.name = 'Last name is required';
+        if (!form.fname) newErrors.fname = 'First name is required';
+        if (!form.lname) newErrors.lname = 'Last name is required';
         if (!form.email) newErrors.email = 'Email is required';
         if (!form.password) newErrors.password = 'Password is required';
         if (form.password.length < 8)
@@ -55,9 +55,42 @@ export default function SignupForm() {
         }
 
         /** **************************
-         * IMPORTANT: CALL SIGNUP API
+         *  SIGNUP API
         ****************************** */
-        console.log('Submitting signup:', form);
+        // console.log('Submitting signup:', form);
+        try {
+            const res = await fetch('/api/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                username: `${form.fname} ${form.lname}`,
+                email: form.email,
+                password: form.password,
+                }),
+                cache: 'no-store',
+            });
+
+            const text = await res.text();
+            let data;
+            try {
+                data = JSON.parse(text);
+            } catch {
+                console.error('Expected JSON, got:', text);
+                setErrors({ general: 'Unexpected server response' });
+                return;
+            }
+
+            if (!res.ok) {
+                setErrors({ general: data.message || 'Signup failed' });
+                return;
+            }
+
+            console.log('Signup success:', data);
+            window.location.href = '/login';
+        } catch (err) {
+            console.error(err);
+            setErrors({ general: 'Something went wrong' });
+        }
     }
 
     return (
