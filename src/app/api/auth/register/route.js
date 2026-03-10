@@ -13,7 +13,6 @@ export async function POST(req) {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const [result] = await db
-      .promise()
       .query(
         "INSERT INTO users (username, email, password) VALUES (?, ?, ?)",
         [username, email, hashedPassword]
