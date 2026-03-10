@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import pool from "@/lib/db";
-import { generateQuiz } from "@/lib/quizGenerator";
+// import { generateQuiz } from "@/lib/quizGenerator";
 
 // Helper: get user id from JWT cookie
 function getUserIdFromCookie(req) {
