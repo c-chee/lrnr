@@ -12,7 +12,6 @@ export async function POST(req) {
   }
 
   const [rows] = await db
-    .promise()
     .query(
       `SELECT * FROM users 
       WHERE LOWER(username) = LOWER(?) 
