@@ -20,7 +20,7 @@ export default function Footer({ type }) {
 
     return (
         <footer className='w-full bg-[var(--footer-bg)] text-[var(--background)]'>
-            <div className='max-w-7xl mx-auto px-6 md:px-10 lg:px-12 py-5'>
+            <div className='max-w-8xl mx-auto px-6 md:px-10 lg:px-12 py-5'>
 
                 <div className='grid grid-cols-1 lg:grid-cols-2'>
 

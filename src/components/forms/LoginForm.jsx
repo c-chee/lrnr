@@ -129,7 +129,8 @@ export default function LoginForm() {
 
             <Button
                 type='submit'
-                className='max-w-[5em] hover:text-[var(--highlight)] border-[var(--highlight)] bg-[var(--highlight)]'
+                className='max-w-[5em]'
+                variant='secondary'
             >
                 Login
             </Button>

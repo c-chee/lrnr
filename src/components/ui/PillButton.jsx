@@ -12,6 +12,7 @@ export default function PillButton({
     }) {
 
     const variants = {
+        // Theme - purple
         primary: `
             border-[var(--button-bg)]
             bg-[var(--button-bg)]
@@ -19,15 +20,25 @@ export default function PillButton({
             hover:bg-transparent
             hover:text-[var(--button-bg)]
         `,
+        // Theme - green
         secondary: `
             border-[var(--button-bg-secondary)]
             bg-[var(--button-bg-secondary)]
             text-[var(--button-text)]
             hover:bg-transparent
             hover:text-[var(--button-bg-secondary)]
+        `,
+        // No theme - For light bg only
+        tertiary: `
+            border-[var(--button-bg-tertiary)]
+            bg-[var(--button-bg-tertiary)]
+            text-[var(--white)]
+            hover:bg-transparent
+            hover:text-[var(--button-bg-tertiary)]
         `
     };
 
+    // Base style if vriant is not set
     const baseStyles = `
         inline-flex items-center justify-center
         px-[12px] py-[2px] md:px-[15px] md:py-[4px]
