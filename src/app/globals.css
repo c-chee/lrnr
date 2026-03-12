@@ -6,6 +6,7 @@
   =========================== */
   --ink-black: #02040f;
   --carbon-black: #212121ff;
+  --carbon: rgb(48, 48, 48);
   --midnight-violet: #330c2fff;
   --slate-blue: #7067cfff;
   --periwinkle: #b7c0eeff;
@@ -16,11 +17,13 @@
   --evergreen: #003b36ff;
   --evergreen-2: #012622ff;
   --granite: #415d5aff;
+  --light-granite: rgb(206, 225, 224);
 
   /* ========================
           Light Theme
   =========================== */
   --background: var(--white);
+  --background-secondary: var(--light-granite);
   --text-color: var(--midnight-violet);
 
   /* Footer */
@@ -29,8 +32,19 @@
   /* Pill Button */
   --button-bg: var(--midnight-violet);
   --button-bg-secondary: var(--evergreen);
+  --button-bg-tertiary: var(--evergreen);
   --button-text: var(--white);
-  --highlight: var(--evergreen);
+  --highlight: var(--mint-leaf);
+
+  /* Quiz */
+  --dash-icon: var(--mint-leaf);
+  --dash-aside:var(--evergreen-2);
+
+  --quiz-background: var(--white);
+  --quiz-text: var(--ink-black);
+
+  --quiz-card:var(--mint-leaf);
+  --quiz-card-text: var(--tea-green);
 }
 
 /* Automatically switches if user's OS is dark */
@@ -40,6 +54,7 @@
           Dark Theme
     =========================== */
     --background: var(--carbon-black);
+    --background-secondary: var(--carbon);
     --text-color: var(--white);
 
     /* Footer */
@@ -48,8 +63,19 @@
     /* Pill Button */
     --button-bg: var(--periwinkle);
     --button-bg-secondary: var(--tea-green);
+    --button-bg-tertiary: var(--evergreen);
     --button-text: var(--midnight-violet);
-    --highlight: var(--tea-green);
+    --highlight: var(--mint-leaf);
+
+    /* Quiz */
+    --dash-icon: var(--slate-blue);
+    --dash-aside:var(--midnight-violet);
+
+    --quiz-background: var(--white);
+    --quiz-text: var(--ink-black);
+
+    --quiz-card: var(--slate-blue);
+    --quiz-card-text: var(--lavender-mist);
   }
 }
 

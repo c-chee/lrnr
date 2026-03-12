@@ -10,13 +10,48 @@ export default function InputField({
     required = false, // Optional validation
     error,
     helperText,
+    className = '',
+    variant, // optional style modifier
 }) {
+
+    const variants = {
+        // Force black text (for light backgrounds)
+        black: `
+            text-black
+            border-black
+            placeholder:text-black/60
+            focus:ring-black
+        `,
+    };
+
+    // Default style (theme controlled)
+    const baseInputStyles = `
+        px-4 py-2
+        rounded-md
+        border
+        bg-transparent
+        text-[var(--text-color)]
+        placeholder:opacity-60
+        transition
+        focus:outline-none
+        focus:ring-2
+        border-[var(--text-color)]
+        focus:ring-[var(--highlight)]
+        ${error ? 'border-red-500 focus:ring-red-500' : ''}
+        ${variant ? variants[variant] : ''}
+        ${className}
+    `;
+
+    const labelStyles = `
+        text-sm font-medium
+        ${variant === 'black' ? 'text-black' : 'text-[var(--text-color)]'}
+    `;
 
     return (
         <div className='flex flex-col gap-2 w-full'>
 
             {/* Label */}
-            <label htmlFor={name} className='text-sm font-medium'>
+            <label htmlFor={name} className={labelStyles}>
                 {label}
             </label>
 
@@ -29,19 +64,7 @@ export default function InputField({
                 value={value}
                 onChange={onChange}
                 required={required}
-                className={`
-                px-4 py-2
-                rounded-md
-                border
-                transition
-                focus:outline-none
-                focus:ring-2
-                ${
-                    error
-                    ? 'border-red-500 focus:ring-red-500'
-                    : 'border-[var(--text-color)] focus:ring-[var(--highlight)]'
-                }
-                `}
+                className={baseInputStyles}
             />
 
             {/* Helper Text */}
@@ -57,6 +80,7 @@ export default function InputField({
                     {error}
                 </p>
             )}
+
         </div>
     );
 }

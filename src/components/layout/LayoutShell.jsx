@@ -13,14 +13,16 @@ export default function LayoutShell({ children }) {
         <>
             {isAccount ? <AccountNavbar /> : <Navbar />}
 
-            <main className='flex-1 flex flex-col pt-[6em]'>
+            <main className='flex-1 flex flex-col pt-[5em]'>
                 {children}
             </main>
 
-            {isAccount
+            {/* {isAccount
                 ? <Footer type='account' />
                 : <Footer type='landing' />
-            }
+            } */}
+            
+            {!isAccount && <Footer type='landing' />}
         </>
     );
 }
