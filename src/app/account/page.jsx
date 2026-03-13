@@ -51,23 +51,23 @@ export default function DashboardHome() {
 
     // -- Effects --
     // Fetch user info and quiz history from DB
-    useEffect(() => {
-        async function fetchDashboardData() {
-            try {
-                const res = await fetch('/api/dashboard'); // API route returns { user, quizzes }
-                const data = await res.json();
-                setUser(data.user);
-                setHistory({
-                    topics: data.quizzes.map(q => q.topic),
-                    styles: data.quizzes.map(q => q.style),
-                    quizzes: data.quizzes,
-                });
-            } catch (err) {
-                console.error('Error fetching dashboard data', err);
-            }
-        }
-        fetchDashboardData();
-    }, []);
+    // useEffect(() => {
+    //     async function fetchDashboardData() {
+    //         try {
+    //             const res = await fetch('/api/dashboard'); // API route returns { user, quizzes }
+    //             const data = await res.json();
+    //             setUser(data.user);
+    //             setHistory({
+    //                 topics: data.quizzes.map(q => q.topic),
+    //                 styles: data.quizzes.map(q => q.style),
+    //                 quizzes: data.quizzes,
+    //             });
+    //         } catch (err) {
+    //             console.error('Error fetching dashboard data', err);
+    //         }
+    //     }
+    //     fetchDashboardData();
+    // }, []);
 
     // -- Handlers --
     function handleCardSelect(quizId, values) {
