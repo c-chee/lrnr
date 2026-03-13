@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import InputField from './InputField';
-import DropdownField from '@/components/ui/DropdownField';
 
 export default function DropdownHistory({
     label,
@@ -12,28 +11,27 @@ export default function DropdownHistory({
     history = [],
     placeholder,
     required = false,
+    error,
 }) {
 
     const [isFocused, setIsFocused] = useState(false);
 
-    // Only show last 5
-    const lastFive = history.slice(0, 5);
+    // Filter history to match current input, show last 5
+    const filtered = history
+        .filter(item => item.toLowerCase().includes(value.toLowerCase()))
+        .slice(0, 5);
 
-    function handleHistorySelect(e) {
+    function handleHistorySelect(item) {
         onChange({
             target: {
                 name,
-                value: e.target.value,
+                value: item,
             },
         });
-
-        setIsFocused(false); // hide dropdown after selecting
+        setIsFocused(false);
     }
 
-    const shouldShowHistory =
-        isFocused &&
-        value.trim() === '' &&
-        lastFive.length > 0;
+    const shouldShowHistory = isFocused && filtered.length > 0;
 
     return (
         <div className='flex flex-col gap-2 w-full relative'>
@@ -42,8 +40,6 @@ export default function DropdownHistory({
             <div
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => {
-                    // small delay prevents dropdown from disappearing
-                    // before click registers
                     setTimeout(() => setIsFocused(false), 150);
                 }}
             >
@@ -54,28 +50,28 @@ export default function DropdownHistory({
                     onChange={onChange}
                     placeholder={placeholder}
                     required={required}
+                    error={error}
+                    variant='black'
                 />
             </div>
 
-            {/* History Dropdown (Auto Hidden) */}
+            {/* History Dropdown */}
             {shouldShowHistory && (
                 <div className='absolute top-full mt-1 w-full z-10'>
-                    <div className='border rounded-md bg-white shadow-md max-h-48 overflow-y-auto'>
+                    <div className='border border-[var(--quiz-text)] rounded-md bg-[var(--white)] shadow-md max-h-48 overflow-y-auto'>
 
-                        {lastFive.map((item, index) => (
+                        {filtered.map((item, index) => (
                             <button
                                 key={index}
                                 type='button'
-                                onClick={() =>
-                                    handleHistorySelect({
-                                        target: { value: item },
-                                    })
-                                }
-                                className='
+                                onClick={() => handleHistorySelect(item)}
+                                className={`
                                     w-full text-left px-4 py-2
-                                    hover:bg-gray-100
+                                    hover:bg-[var(--quiz-text)]/10
                                     text-sm
-                                '
+                                    text-[var(--quiz-text)]
+                                    ${index < filtered.length - 1 ? 'border-b border-[var(--quiz-text)]/20' : ''}
+                                `}
                             >
                                 {item}
                             </button>

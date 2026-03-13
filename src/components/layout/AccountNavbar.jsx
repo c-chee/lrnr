@@ -19,12 +19,12 @@ export default function AccountNavbar() {
     return (
         <header>
             <nav className='fixed top-0 left-0 w-full z-50 bg-[var(--background)]'>
-                <div className='max-w-7xl mx-auto px-6 md:px-10 lg:px-12 py-5 flex justify-between items-center'>
+                <div className='max-w-8xl mx-auto px-6 md:px-10 lg:px-12 py-5 flex justify-between items-center'>
                 
                     {/* === Logo === */}
                     <div>
                         {/* Light Theme */}
-                        <Link href='/' className='flex'>
+                        <Link href='/account?view=dashboard' className='flex'>
                             <img
                                 src='/lrnr_title_black.png'
                                 alt='LRNR'
@@ -33,7 +33,7 @@ export default function AccountNavbar() {
                         </Link>
 
                         {/* Dark Theme */}
-                        <Link href='/'>
+                        <Link href='/account?view=dashboard' className='flex'>
                             <img
                                 src='/lrnr_title_white.png'
                                 alt='LRNR'
@@ -44,9 +44,9 @@ export default function AccountNavbar() {
 
                     {/* === Links === */}
                     <div>
-                        <HollowButton href='/generate' className='mx-1 lg:mx-2'>
+                        {/* <HollowButton href='/generate' className='mx-1 lg:mx-2'>
                             Generate a quiz
-                        </HollowButton>
+                        </HollowButton> */}
 
                         <HollowButton onClick={handleLogout} className='mx-1 lg:mx-2' >
                             Logout
