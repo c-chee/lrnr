@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   /* ========================
@@ -12,8 +12,10 @@
   --periwinkle: #b7c0eeff;
   --lavender-mist: #ece5f0ff;
   --white: #fbfeff;
+  --honeydew: #e7ffe9;
   --tea-green: #cbf3d2ff;
   --mint-leaf: #23b583ff;
+  --light-evergreen: rgb(0, 130, 119);
   --evergreen: #003b36ff;
   --evergreen-2: #012622ff;
   --granite: #415d5aff;
@@ -28,6 +30,13 @@
 
   /* Footer */
   --footer-bg: var(--midnight-violet);
+
+  /* Card Colors */
+  --card-one: var(--white);
+  --card-two: var(--honeydew);
+  --card-three: var(--light-evergreen);
+  --card-four: var(--evergreen);
+  --card-text: var(--midnight-violet);
 
   /* Pill Button */
   --button-bg: var(--midnight-violet);
@@ -59,6 +68,13 @@
 
     /* Footer */
     --footer-bg: var(--periwinkle);
+
+    /* Card Colors */
+    --card-one: var(--lavender-mist);
+    --card-two: var(--periwinkle);
+    --card-three: var(--slate-blue);
+    --card-four: var(--midnight-violet);
+    --card-text: var(--midnight-violet);
 
     /* Pill Button */
     --button-bg: var(--periwinkle);

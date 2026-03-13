@@ -24,7 +24,7 @@ export default function AccountNavbar() {
                     {/* === Logo === */}
                     <div>
                         {/* Light Theme */}
-                        <Link href='/account' className='flex'>
+                        <Link href='/account?view=dashboard' className='flex'>
                             <img
                                 src='/lrnr_title_black.png'
                                 alt='LRNR'
@@ -33,7 +33,7 @@ export default function AccountNavbar() {
                         </Link>
 
                         {/* Dark Theme */}
-                        <Link href='/account'>
+                        <Link href='/account?view=dashboard' className='flex'>
                             <img
                                 src='/lrnr_title_white.png'
                                 alt='LRNR'
