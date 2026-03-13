@@ -89,19 +89,14 @@ export default function DashboardHome() {
     async function handleFormSubmit() {
         setLoading(true);
         try {
-            const res = await fetch('/api/quizzes', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    user_id: user.id,
-                    topic: formValues.topic,
-                    level: formValues.level,
-                    num_questions: formValues.count,
-                    question_style: formValues.style,
-                }),
-            });
-
-            const newQuiz = await res.json();
+            // Simulate API response
+            const newQuiz = {
+                id: Date.now(), // mock unique ID
+                topic: formValues.topic,
+                question_style: formValues.style,
+                level: formValues.level,
+                num_questions: formValues.count,
+            };
 
             // Update local state so sidebar updates without refresh
             setHistory(prev => ({
