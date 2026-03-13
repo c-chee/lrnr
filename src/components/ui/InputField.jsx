@@ -20,7 +20,7 @@ export default function InputField({
             text-black
             border-black
             placeholder:text-black/60
-            focus:ring-black
+            focus:ring-[var(--highlight)]
         `,
     };
 
