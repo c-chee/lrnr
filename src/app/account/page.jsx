@@ -1,7 +1,7 @@
 'use client';
 
 // === Imports ===
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 
@@ -48,26 +48,6 @@ export default function DashboardHome() {
     // -- Data --
     // const user = EXAMPLE_USER;
     // const history = EXAMPLE_HIST;
-
-    // -- Effects --
-    // Fetch user info and quiz history from DB
-    // useEffect(() => {
-    //     async function fetchDashboardData() {
-    //         try {
-    //             const res = await fetch('/api/dashboard'); // API route returns { user, quizzes }
-    //             const data = await res.json();
-    //             setUser(data.user);
-    //             setHistory({
-    //                 topics: data.quizzes.map(q => q.topic),
-    //                 styles: data.quizzes.map(q => q.style),
-    //                 quizzes: data.quizzes,
-    //             });
-    //         } catch (err) {
-    //             console.error('Error fetching dashboard data', err);
-    //         }
-    //     }
-    //     fetchDashboardData();
-    // }, []);
 
     // -- Handlers --
     function handleCardSelect(quizId, values) {
