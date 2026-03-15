@@ -87,11 +87,26 @@ export default function DashboardHome() {
 
             const data = await res.json();
 
-            if (data.success && data.quiz?.questions?.length) {
-                // Save AI questions to state
-                setGeneratedQuestions(data.quiz.questions);
-            } else {
+            if (data.success && data.quiz) {
+                let questions = [];
+
+                try {
+                    let content = JSON.stringify(data.quiz);
+
+                    content = content.replace(/```(?:json)?\n?/g, '').replace(/```/g, '').trim();
+                    const quiz = JSON.parse(content);
+
+                    questions = quiz.questions || [];
+                } catch (err) {
+                    console.error("Error parsing AI quiz:", err);
+                }
+
+                if (questions.length > 0) {
+                    // Save AI questions to state
+                    setGeneratedQuestions(questions);
+                } else {
                 console.error("No questions returned from AI");
+                }
             }
 
             // Simulate API response
