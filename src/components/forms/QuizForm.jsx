@@ -5,7 +5,7 @@ import DropdownField from '@/components/ui/DropdownField';
 import DropdownHistory from '@/components/ui/DropdownHistory';
 import Button from '@/components/ui/PillButton';
 
-export default function QuizForm({ user, history, formValues, onFormChange }) {
+export default function QuizForm({ user, history, formValues, onFormChange, onFormSubmit }) {
 
     // === States ===
     /**
@@ -84,6 +84,10 @@ export default function QuizForm({ user, history, formValues, onFormChange }) {
     function handleSubmit(e) {
         e.preventDefault();
         if (!validateForm()) return;
+
+        if (onFormSubmit) {
+            onFormSubmit(form);
+        }
 
         console.log('Valid form:', form);
 

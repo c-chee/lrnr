@@ -2,13 +2,14 @@
 
 // === Imports ===
 import { useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { forbidden, useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 
 import DashboardSidebar from '@/components/dashboard/DashboardSideBar';
 import DashboardTopBar from '@/components/dashboard/DashboardTopBar';
 import QuizFormCard from '@/components/dashboard/QuizFormCard';
 import DashboardCard from '@/components/dashboard/DashboardCard';
+import QuizCards from './QuizCard';
 
 // === Mock Examples ===
 const EXAMPLE_USER = { name: 'John' };
@@ -35,6 +36,7 @@ export default function DashboardHome() {
     const router = useRouter();
     
     const [activeQuizId, setActiveQuizId] = useState(null);
+    const [generatedQuestions, setGeneratedQuestions] = useState([]);
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [formValues, setFormValues] = useState(EMPTY_FORM);
     const [user, setUser] = useState(EXAMPLE_USER);
@@ -66,16 +68,39 @@ export default function DashboardHome() {
     }
 
     // Handler to submit a quiz form to DB
-    async function handleFormSubmit() {
+    async function handleFormSubmit(formData) {
         setLoading(true);
         try {
+
+            const res = await fetch('/api/quiz/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },  
+                body: JSON.stringify({
+                    topic: formData.topic,
+                    difficulty: formData.level,
+                    numQuestions: formData.count,
+                    style: formData.style
+                })
+            });
+
+            const data = await res.json();
+
+            if (data.success && data.quiz?.questions?.length) {
+                // Save AI questions to state
+                setGeneratedQuestions(data.quiz.questions);
+            } else {
+                console.error("No questions returned from AI");
+            }
+
             // Simulate API response
             const newQuiz = {
                 id: Date.now(), // mock unique ID
-                topic: formValues.topic,
-                question_style: formValues.style,
-                level: formValues.level,
-                num_questions: formValues.count,
+                topic: formData.topic,
+                question_style: formData.style,
+                level: formData.level,
+                num_questions: formData.count,
             };
 
             // Update local state so sidebar updates without refresh
@@ -184,6 +209,12 @@ export default function DashboardHome() {
                             hasActiveQuiz={activeQuizId !== null}
                             loading={loading}
                         />
+
+                        {generatedQuestions.length > 0 && (
+                            <div className='mt-10 w-full flex justify-center'>
+                                <QuizCards questions={generatedQuestions} />
+                            </div>
+                        )}
                     </div>
                 )
                 }
