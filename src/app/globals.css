@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   /* ========================
@@ -6,31 +6,54 @@
   =========================== */
   --ink-black: #02040f;
   --carbon-black: #212121ff;
+  --carbon: rgb(48, 48, 48);
   --midnight-violet: #330c2fff;
   --slate-blue: #7067cfff;
   --periwinkle: #b7c0eeff;
   --lavender-mist: #ece5f0ff;
   --white: #fbfeff;
+  --honeydew: #e7ffe9;
   --tea-green: #cbf3d2ff;
   --mint-leaf: #23b583ff;
+  --light-evergreen: rgb(0, 130, 119);
   --evergreen: #003b36ff;
   --evergreen-2: #012622ff;
   --granite: #415d5aff;
+  --light-granite: rgb(206, 225, 224);
 
   /* ========================
           Light Theme
   =========================== */
   --background: var(--white);
+  --background-secondary: var(--light-granite);
   --text-color: var(--midnight-violet);
 
   /* Footer */
   --footer-bg: var(--midnight-violet);
 
+  /* Card Colors */
+  --card-one: var(--white);
+  --card-two: var(--honeydew);
+  --card-three: var(--light-evergreen);
+  --card-four: var(--evergreen);
+  --card-text: var(--midnight-violet);
+
   /* Pill Button */
   --button-bg: var(--midnight-violet);
   --button-bg-secondary: var(--evergreen);
+  --button-bg-tertiary: var(--evergreen);
   --button-text: var(--white);
-  --highlight: var(--evergreen);
+  --highlight: var(--mint-leaf);
+
+  /* Quiz */
+  --dash-icon: var(--mint-leaf);
+  --dash-aside:var(--evergreen-2);
+
+  --quiz-background: var(--white);
+  --quiz-text: var(--ink-black);
+
+  --quiz-card:var(--mint-leaf);
+  --quiz-card-text: var(--tea-green);
 }
 
 /* Automatically switches if user's OS is dark */
@@ -40,16 +63,35 @@
           Dark Theme
     =========================== */
     --background: var(--carbon-black);
+    --background-secondary: var(--carbon);
     --text-color: var(--white);
 
     /* Footer */
     --footer-bg: var(--periwinkle);
 
+    /* Card Colors */
+    --card-one: var(--lavender-mist);
+    --card-two: var(--periwinkle);
+    --card-three: var(--slate-blue);
+    --card-four: var(--midnight-violet);
+    --card-text: var(--midnight-violet);
+
     /* Pill Button */
     --button-bg: var(--periwinkle);
     --button-bg-secondary: var(--tea-green);
+    --button-bg-tertiary: var(--evergreen);
     --button-text: var(--midnight-violet);
-    --highlight: var(--tea-green);
+    --highlight: var(--mint-leaf);
+
+    /* Quiz */
+    --dash-icon: var(--slate-blue);
+    --dash-aside:var(--midnight-violet);
+
+    --quiz-background: var(--white);
+    --quiz-text: var(--ink-black);
+
+    --quiz-card: var(--slate-blue);
+    --quiz-card-text: var(--lavender-mist);
   }
 }
 
