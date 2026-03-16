@@ -8,6 +8,8 @@ export default function QuizCards({ questions = [] }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [answers, setAnswers] = useState([]);
+    const [showResults, setShowResults] = useState(false);
+    const [score, setScore] = useState(0);
 
     const currentQuestion = questions[currentIndex];
 
@@ -21,13 +23,20 @@ export default function QuizCards({ questions = [] }) {
         const updatedAnswers = [...answers];
         updatedAnswers[currentIndex] = selectedAnswer;
 
+        const correctAnswer = currentQuestion.answer;
+
+        //check if correct
+        if (selectedAnswer === correctAnswer) {
+            setScore(prev => prev + 1);
+        }
+
         setAnswers(updatedAnswers);
         setSelectedAnswer(null);
 
         if (currentIndex < questions.length - 1) {
             setCurrentIndex(prev => prev + 1);
         } else {
-            console.log("Quiz complete", updatedAnswers);
+            setShowResults(true);
         }
     }
 
@@ -35,6 +44,40 @@ export default function QuizCards({ questions = [] }) {
         return (
             <div className="text-center text-gray-500">
                 No quiz questions available
+            </div>
+        );
+    }
+
+    // Results
+    if (showResults) {
+        return (
+            <div className='w-full max-w-2xl bg-white shadow-lg rounded-2xl p-8 text-center'>
+                <h2 className='text-2xl font-bold mb-4'>Quiz Complete!</h2>
+                <p className="text-lg mb-6">
+                    You scored {score} out of {questions.length}
+                </p>
+                <div className="text-left space-y-4">
+                    {questions.map((q, i) => (
+                        <div key={i} className="border-b pb-3">
+                            <p className="font-semibold">{q.question}</p>
+
+                            <p>
+                                Your answer:{" "}
+                                <span className={answers[i] === q.answer ? "text-green-600" : "text-red-600"}>
+                                    {answers[i]}
+                                </span>
+                            </p>
+                            {answers[i] !== q.answer && (
+                                <p className="text-green-600">
+                                    Correct answer: {q.answer}
+                                </p>
+                            )}
+                            <p className="text-sm text-gray-600 mt-1">
+                                {q.explanation}
+                            </p>
+                        </div>
+                    ))}
+                </div>
             </div>
         );
     }
