@@ -217,7 +217,7 @@ export default function DashboardHome() {
                     ) : (
                         <QuizCards
                             questions={generatedQuestions}
-                            onReset={() => setGeneratedQuestions([])}
+                            onRestart={() => setGeneratedQuestions([])}
                             />
                         )}
                     </div>
