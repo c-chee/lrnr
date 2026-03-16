@@ -1,12 +1,20 @@
 'use client';
-import { useState, useEffect } from 'react';
+
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import HollowButton from '@/components/ui/PillButtonHollow';
 
-// === Components ===
-import HollowButton from '@/components/ui/PillButtonHollow'
+export default function AccountNavbar() {
+    const router = useRouter();
 
+    const handleLogout = async () => {
+        await fetch('/api/logout', {
+        method: 'POST',
+        });
 
-export default function Navbar() {
+        router.push('/'); // redirect to landing page
+        router.refresh(); // clear cached data
+    };
 
     return (
         <header>
@@ -16,7 +24,7 @@ export default function Navbar() {
                     {/* === Logo === */}
                     <div>
                         {/* Light Theme */}
-                        <Link href='/' className='flex'>
+                        <Link href='/account?view=dashboard' className='flex'>
                             <img
                                 src='/lrnr_title_black.png'
                                 alt='LRNR'
@@ -25,7 +33,7 @@ export default function Navbar() {
                         </Link>
 
                         {/* Dark Theme */}
-                        <Link href='/'>
+                        <Link href='/account?view=dashboard' className='flex'>
                             <img
                                 src='/lrnr_title_white.png'
                                 alt='LRNR'
@@ -36,12 +44,12 @@ export default function Navbar() {
 
                     {/* === Links === */}
                     <div>
-                        <HollowButton href='/login' className='mx-1 lg:mx-2'>
-                            Login
-                        </HollowButton>
+                        {/* <HollowButton href='/generate' className='mx-1 lg:mx-2'>
+                            Generate a quiz
+                        </HollowButton> */}
 
-                        <HollowButton href='/signup' className='mx-1 lg:mx-2'>
-                            Sign up
+                        <HollowButton onClick={handleLogout} className='mx-1 lg:mx-2' >
+                            Logout
                         </HollowButton>
                     </div>
                 </div>

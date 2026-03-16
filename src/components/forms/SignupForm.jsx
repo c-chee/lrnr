@@ -142,7 +142,11 @@ export default function SignupForm() {
                 required
             />
 
-            <Button type='submit' className='max-w-[15em] hover:text-[var(--highlight)] border-[var(--highlight)] bg-[var(--highlight)]'>
+            <Button 
+                type='submit' 
+                className='max-w-[15em]'
+                variant='secondary'
+            >
                 Create Account
             </Button>
         </form>
