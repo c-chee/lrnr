@@ -71,13 +71,13 @@ export default function DashboardHome() {
     async function handleFormSubmit(formData) {
         setLoading(true);
         try {
-
             const res = await fetch('/api/quiz/generate', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },  
                 body: JSON.stringify({
+                    userId: user?.id || 1, //fix
                     topic: formData.topic,
                     difficulty: formData.level,
                     numQuestions: formData.count,
@@ -86,26 +86,15 @@ export default function DashboardHome() {
             });
 
             const data = await res.json();
+            console.log("API Response:", data);
 
             if (data.success && data.quiz) {
-                let questions = [];
-
-                try {
-                    let content = JSON.stringify(data.quiz);
-
-                    content = content.replace(/```(?:json)?\n?/g, '').replace(/```/g, '').trim();
-                    const quiz = JSON.parse(content);
-
-                    questions = quiz.questions || [];
-                } catch (err) {
-                    console.error("Error parsing AI quiz:", err);
-                }
+                const questions = data.quiz.questions || [];
 
                 if (questions.length > 0) {
-                    // Save AI questions to state
                     setGeneratedQuestions(questions);
                 } else {
-                console.error("No questions returned from AI");
+                    console.error("No questions returned from AI");
                 }
             }
 
