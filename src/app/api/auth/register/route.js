@@ -19,7 +19,7 @@ export async function POST(req) {
 
     return NextResponse.json(
       { message: "User created successfully", userId: result.insertId },
-      { status: 201 },
+      { status: 201 }
     );
   } catch (error) {
     console.error("REGISTER ERROR:", error);
