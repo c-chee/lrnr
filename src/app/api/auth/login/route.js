@@ -11,11 +11,11 @@ export async function POST(req) {
       return NextResponse.json({ message: "Missing fields" }, { status: 400 });
     }
 
-    const [rows] = await db.execute(
+    const [rows] = await db.query(
       `SELECT * FROM users 
-       WHERE LOWER(username) = LOWER(?) 
-       OR LOWER(email) = LOWER(?)`,
-      [identifier, identifier],
+      WHERE LOWER(username) = LOWER(?) 
+      OR LOWER(email) = LOWER(?)`,
+      [identifier, identifier]
     );
 
     if (rows.length === 0) {
@@ -39,7 +39,7 @@ export async function POST(req) {
     const now = new Date();
     const lastLogin = user.last_login ? new Date(user.last_login) : null;
 
-    let newStreak = user.streak;
+    let newStreak = user.streak || 0;
 
     if (lastLogin) {
       // Strip times, compare dates only
