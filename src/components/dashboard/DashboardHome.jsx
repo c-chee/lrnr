@@ -215,6 +215,7 @@ export default function DashboardHome() {
                             ← Back to Dashboard
                         </button>
 
+                    {generatedQuestions.length === 0 ? (
                         <QuizFormCard
                             user={user}
                             history={history}
@@ -224,11 +225,11 @@ export default function DashboardHome() {
                             hasActiveQuiz={activeQuizId !== null}
                             loading={loading}
                         />
-
-                        {generatedQuestions.length > 0 && (
-                            <div className='mt-10 w-full flex justify-center'>
-                                <QuizCards questions={generatedQuestions} />
-                            </div>
+                    ) : (
+                        <QuizCards
+                            questions={generatedQuestions}
+                            onReset={() => setGeneratedQuestions([])}
+                            />
                         )}
                     </div>
                 )
