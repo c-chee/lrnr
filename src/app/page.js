@@ -1,8 +1,13 @@
+import Hero from '@/components/sections/Hero';
+import FAQPage from '@/components/sections/Faq';
+import UseCases from '@/components/sections/Cards';
 
 export default function Home() {
   return (
-    <div className='flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black'>
-      <p>Hello Friend!</p>
+    <div className='flex flex-col w-screen min-h-screen items-center justify-start'>
+      <Hero />
+      <UseCases />
+      <FAQPage />
     </div>
   );
 }
