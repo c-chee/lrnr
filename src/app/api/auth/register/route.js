@@ -12,11 +12,10 @@ export async function POST(req) {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const [result] = await db
-      .query(
-        "INSERT INTO users (username, email, password) VALUES (?, ?, ?)",
-        [username, email, hashedPassword]
-      );
+    const [result] = await db.execute(
+      "INSERT INTO users (username, email, password, streak) VALUES (?, ?, ?, ?)",
+      [username, email, hashedPassword, 0],
+    );
 
     return NextResponse.json(
       { message: "User created successfully", userId: result.insertId },
@@ -25,9 +24,6 @@ export async function POST(req) {
   } catch (error) {
     console.error("REGISTER ERROR:", error);
 
-      return NextResponse.json(
-        { message: error.message },
-        { status: 500 }
-      );
-    }
+    return NextResponse.json({ message: error.message }, { status: 500 });
+  }
 }
