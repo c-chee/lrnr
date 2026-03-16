@@ -8,6 +8,7 @@ export default function QuizFormCard({
     history,
     formValues,
     onFormChange,
+    onFormSubmit,
     hasActiveQuiz,
 }) {
     return (
@@ -36,6 +37,7 @@ export default function QuizFormCard({
                 history={history}
                 formValues={formValues}
                 onFormChange={onFormChange}
+                onFormSubmit={onFormSubmit}
             />
         </div>
     );
