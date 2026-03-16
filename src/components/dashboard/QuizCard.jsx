@@ -3,7 +3,7 @@
 import PillButton from '@/components/ui/PillButton';
 import { useState } from 'react';
 
-export default function QuizCards({ questions = [] }) {
+export default function QuizCards({ questions = [], onRestart }) {
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -77,6 +77,14 @@ export default function QuizCards({ questions = [] }) {
                             </p>
                         </div>
                     ))}
+                        <div className='flex justify-center mt-8'>
+                            <PillButton
+                            onClick={onRestart}
+                            variant='primary'
+                            >
+                                Start a New Quiz
+                            </PillButton>
+                        </div>
                 </div>
             </div>
         );
