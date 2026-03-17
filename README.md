@@ -21,7 +21,7 @@
 - **Number of Questions** – between 1 and 20
 - **Question Style** – such as formal, multiple choice, true/false, or short answer
 
-Users can generate quizzes **without creating an account**, enabling quick access to learning tools. However, users who choose to **sign up** unlock additional features designed to enhance engagement and track progress, including:
+Users can generate quizzes by **creating an account**, enabling quick access to learning tools. However, users who choose to **sign up** unlock features designed to enhance engagement and track progress, including:
 
 - **Saved Prompt History** – store previous quiz prompts
 - **Quick Quiz Regeneration** – instantly recreate quizzes from past prompt history
