@@ -27,7 +27,7 @@ export default function Hero() {
                     </p>
 
                     <div className='flex justify-self-center md:justify-start'>
-                        <Button href='/generate' className='mx-1 lg:mx-2' variant='secondary'>
+                        <Button href='/login' className='mx-1 lg:mx-2' variant='secondary'>
                             Generate a quiz
                         </Button>
                     </div>
