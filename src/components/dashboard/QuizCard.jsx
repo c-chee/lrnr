@@ -51,7 +51,7 @@ export default function QuizCards({ questions = [], onRestart }) {
     // Results
     if (showResults) {
         return (
-            <div className='w-full max-w-2xl bg-white shadow-lg rounded-2xl p-8 text-center'>
+            <div className='w-full max-w-2xl bg-white text-[var(--midnight-violet)] shadow-lg rounded-2xl p-8 text-center'>
                 <h2 className='text-2xl font-bold mb-4'>Quiz Complete!</h2>
                 <p className='text-lg mb-6'>
                     You scored {score} out of {questions.length}
@@ -80,7 +80,7 @@ export default function QuizCards({ questions = [], onRestart }) {
                         <div className='flex justify-center mt-8'>
                             <PillButton
                             onClick={onRestart}
-                            variant='primary'
+                            variant='four'
                             >
                                 Start a New Quiz
                             </PillButton>
@@ -91,7 +91,7 @@ export default function QuizCards({ questions = [], onRestart }) {
     }
 
     return (
-        <div className='w-full max-w-2xl bg-white shadow-lg rounded-2xl p-8'>
+        <div className='w-full max-w-2xl bg-white text-[var(--midnight-violet)] shadow-lg rounded-2xl p-8'>
 
             {/* Question counter */}
             <div className='text-sm text-gray-500 mb-2'>
@@ -125,10 +125,10 @@ export default function QuizCards({ questions = [], onRestart }) {
                 <PillButton
                     onClick={handleNext}
                     disabled={!selectedAnswer}
-                    variant='secondary'
+                    variant='tertiary'
                 >
             {currentIndex === questions.length - 1 ? 'Finish Quiz' : 'Next Question'}
-                </PillButton>
+                </PillButton >
             </div>
 
         </div>
