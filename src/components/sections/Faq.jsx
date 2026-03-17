@@ -31,7 +31,7 @@ export default function FAQPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[var(--bg)] px-6 py-20">
+    <main className="min-h-[70vh] bg-[var(--bg)] px-6 py-20">
       <div className="mx-auto w-full max-w-4xl">
         {/* Title */}
         <h1
