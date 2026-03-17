@@ -90,10 +90,6 @@ export default function QuizForm({ user, history, formValues, onFormChange, onFo
         }
 
         console.log('Valid form:', form);
-
-        /** ********************
-         * AI API
-        ************************ */
     }
 
     // Display
