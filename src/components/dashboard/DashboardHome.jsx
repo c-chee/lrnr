@@ -219,21 +219,6 @@ export default function DashboardHome() {
                 {showDashboard ? (
                     <div className='grid grid-rows-3 sm:grid-rows-2 sm:grid-cols-2 gap-6 w-full max-w-4xl'>
 
-<<<<<<< mc-backend
-                        <DashboardCard
-                            title='Streak'
-                            subtitle='Login everyday to continue the streak.'
-                            number={7}
-                            variant='one'
-                        />
-
-                        <DashboardCard
-                            title='Points'
-                            subtitle='Complete more quizes to earn more points.'
-                            number={points}
-                            variant='two'
-                        />
-=======
                         {!loadingUser && user ? (
                             <>
                             <DashboardCard
@@ -255,7 +240,6 @@ export default function DashboardHome() {
                                 <DashboardCard title="Points" subtitle="Loading..." number={0} variant="two" />
                             </>
                         )}
->>>>>>> main
 
                         <div className='sm:col-span-2'>
                             <DashboardCard
