@@ -154,7 +154,7 @@ export default function QuizForm({ user, history, formValues, onFormChange, onFo
                 value={form.style}
                 onChange={handleChange}
                 history={user ? history?.styles : []}
-                placeholder='e.g. Normal, Like a teacher...'
+                placeholder='e.g. Normal, True/False, Like a teacher...'
                 required
                 error={errors.style}
             />

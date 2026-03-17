@@ -41,7 +41,7 @@ export default function UseCases() {
         {/* Heading */}
         <div className="text-center mb-10 md:mb-12">
           <h2
-            className={`${cormorant.className} text-[42px] sm:text-[55px] md:text-[57px] lg:text-[65px] font-light text-[var(--text-color)] leading-tight`}
+            className={`${cormorant.className} text-[35px] sm:text-[45px] md:text-[57px] lg:text-[50px] font-light text-[var(--text-color)] leading-tight`}
           >
             What should you use LRNR for?
           </h2>
