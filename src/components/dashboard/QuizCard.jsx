@@ -80,11 +80,7 @@ export default function QuizCards({ questions = [], onRestart }) {
                         <div className='flex justify-center mt-8'>
                             <PillButton
                             onClick={onRestart}
-<<<<<<< mc-backend
-                            variant='tertiary'
-=======
                             variant='four'
->>>>>>> main
                             >
                                 Start a New Quiz
                             </PillButton>
