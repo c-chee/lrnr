@@ -45,6 +45,7 @@ export default function DashboardHome() {
     const [user, setUser] = useState(null);
     const [loadingUser, setLoadingUser] = useState(true);
 
+    const [quizzes, setQuizzes] = useState([]);
     const [history, setHistory] = useState({ topics: [], styles: [], quizzes: [] });
     const [loading, setLoading] = useState(false); // For submit loading
     
@@ -74,6 +75,23 @@ export default function DashboardHome() {
         }
 
         fetchUser();
+    }, []);
+
+    useEffect(() => {
+        async function fetchQuizzes() {
+            try {
+                const res = await fetch('/api/quiz');
+                const data = await res.json();
+
+                if (data.quizzes) {
+                    setQuizzes(data.quizzes);
+                }
+            } catch (err) {
+                console.error('Failed to fetch quizzes:', err);
+            }
+        }
+
+        fetchQuizzes();
     }, []);
 
     // -- Handlers --
@@ -132,7 +150,10 @@ export default function DashboardHome() {
                 num_questions: formData.count,
             };
 
-            // Update local state so sidebar updates without refresh
+            // Update sidebar quizzes instantly
+            setQuizzes(prev => [newQuiz, ...prev]);
+
+            // Keep form history working
             setHistory(prev => ({
                 topics: [...prev.topics, newQuiz.topic],
                 styles: [...prev.styles, newQuiz.question_style],
@@ -167,7 +188,7 @@ export default function DashboardHome() {
         <DashboardSidebar
             isOpen={sidebarOpen}
             onClose={() => setSidebarOpen(false)}
-            quizzes={history.quizzes}
+            quizzes={quizzes}
             activeQuizId={activeQuizId}
             onCardSelect={handleCardSelect}
             user={user}

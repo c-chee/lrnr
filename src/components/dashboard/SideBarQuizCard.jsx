@@ -9,9 +9,9 @@ export default function SidebarQuizCard({ quiz, isActive, onSelect }) {
                 {
                     // Pass back exactly the four fields <QuizForm> controls,so the parent can drop them straight into form state.
                     topic: quiz.topic,
-                    level: quiz.level,
-                    count: String(quiz.num_questions), // form state stores count as string
-                    style: quiz.question_style,
+                    level: quiz.difficulty,
+                    count: String(quiz.questions?.length || 0), // form state stores count as string
+                    style: quiz.style,
                 }
             )}
             className={`
@@ -36,17 +36,17 @@ export default function SidebarQuizCard({ quiz, isActive, onSelect }) {
 
                 {/* Expertise level */}
                 <span className={`text-[9.5px] font-semibold px-2 py-0.5 rounded-full text-[var(--quiz-card-text)]`}>
-                    {quiz.level}
+                    {quiz.difficulty}
                 </span>
 
                 {/* Number of questions */}
                 <span className='text-[9.5px] font-semibold px-2 py-0.5 rounded-full bg-[var(--white)]/10 text-[var(--quiz-card-text)]'>
-                    {quiz.num_questions}Q
+                    {quiz.questions?.length || 0}Q
                 </span>
 
                 {/* Question style */}
                 <span className='text-[9.5px] font-semibold px-2 py-0.5 rounded-full bg-[var(--white)]/10 text-[var(--quiz-card-text)] truncate'>
-                    {quiz.question_style}
+                    {quiz.style}
                 </span>
 
             </div>
