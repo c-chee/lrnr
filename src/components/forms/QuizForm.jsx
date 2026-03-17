@@ -5,7 +5,7 @@ import DropdownField from '@/components/ui/DropdownField';
 import DropdownHistory from '@/components/ui/DropdownHistory';
 import Button from '@/components/ui/PillButton';
 
-export default function QuizForm({ user, history, formValues, onFormChange, onFormSubmit }) {
+export default function QuizForm({ user, history, formValues, onFormChange, onFormSubmit, loading }) {
 
     // === States ===
     /**
@@ -83,6 +83,9 @@ export default function QuizForm({ user, history, formValues, onFormChange, onFo
      */
     function handleSubmit(e) {
         e.preventDefault();
+
+        if (loading) return; // prevent double submit
+
         if (!validateForm()) return;
 
         if (onFormSubmit) {
@@ -90,10 +93,6 @@ export default function QuizForm({ user, history, formValues, onFormChange, onFo
         }
 
         console.log('Valid form:', form);
-
-        /** ********************
-         * AI API
-        ************************ */
     }
 
     // Display
@@ -164,10 +163,11 @@ export default function QuizForm({ user, history, formValues, onFormChange, onFo
                 Create Quiz ... */}
             <Button
                 type='submit'
+                disabled={loading}
                 className='max-w-[10em] place-items-center'
                 variant='tertiary'
             >
-                Create Quiz
+                {loading ? 'Generating...' : 'Create Quiz'}
             </Button>
 
         </form>

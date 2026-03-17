@@ -74,9 +74,10 @@ export async function POST(req) {
     const token = jwt.sign(
       {
         id: user.id,
-        username: user.username,
+        name: user.username,
         email: user.email,
         streak: newStreak,
+        points: user.points
       },
       process.env.JWT_SECRET,
       { expiresIn: "1h" },
@@ -86,9 +87,10 @@ export async function POST(req) {
       message: "Sign in successful",
       user: {
         id: user.id,
-        username: user.username,
+        name: user.username,
         email: user.email,
         streak: newStreak,
+        points: user.points
       },
     });
 
@@ -106,5 +108,43 @@ export async function POST(req) {
       { message: "Error signing in", error: error.message },
       { status: 500 },
     );
+  }
+}
+
+export async function GET(req) {
+  try {
+    const token = req.cookies.get("token")?.value;
+
+    if (!token) {
+      return NextResponse.json({ user: null });
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    // Fetch fresh user data from DB
+    const [rows] = await db.query(
+      `SELECT id, username, email, streak, points FROM users WHERE id = ?`,
+      [decoded.id]
+    );
+
+    if (rows.length === 0) {
+      return NextResponse.json({ user: null });
+    }
+
+    const user = rows[0];
+
+    return NextResponse.json({
+      user: {
+        id: user.id,
+        name: user.username,
+        email: user.email,
+        streak: user.streak,
+        points: user.points
+      }
+    });
+
+  } catch (err) {
+    console.error("Session error:", err);
+    return NextResponse.json({ user: null });
   }
 }

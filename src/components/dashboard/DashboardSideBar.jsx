@@ -65,7 +65,7 @@ export default function DashboardSidebar({
                                 key={quiz.id}
                                 quiz={quiz}
                                 isActive={activeQuizId === quiz.id}
-                                onSelect={(values) => onCardSelect(quiz.id, values)}
+                                onSelect={onCardSelect}
                             />
                         ))}
                     </div>

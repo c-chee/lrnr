@@ -61,7 +61,7 @@ export default function InputField({
                 name={name}
                 type={type}
                 placeholder={placeholder}
-                value={value}
+                value={value ?? ''} 
                 onChange={onChange}
                 required={required}
                 className={baseInputStyles}
