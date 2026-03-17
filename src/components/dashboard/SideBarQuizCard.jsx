@@ -8,10 +8,10 @@ export default function SidebarQuizCard({ quiz, isActive, onSelect }) {
                 quiz.id,
                 {
                     // Pass back exactly the four fields <QuizForm> controls,so the parent can drop them straight into form state.
-                    topic: quiz.topic,
-                    level: quiz.difficulty,
+                    topic: quiz.topic || '',
+                    level: quiz.difficulty || '',
                     count: String(quiz.questions?.length || 0), // form state stores count as string
-                    style: quiz.style,
+                    style: quiz.style || '',
                 }
             )}
             className={`
