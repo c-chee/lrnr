@@ -1,7 +1,13 @@
-
 export default function UserStrip({ user, quizCount }) {
 
-    const initial = user.name[0].toUpperCase();
+    // Safely get user's first initial
+    const initial = user?.name ? user.name[0].toUpperCase() : '?';
+
+    // Display name fallback while loading
+    const displayName = user?.name || 'Loading...';
+
+    // Safe quiz count
+    const count = quizCount ?? 0;
 
     return (
         <div className='px-4 py-4 border-t border-[var(--white)]/10 shrink-0'>
@@ -16,13 +22,14 @@ export default function UserStrip({ user, quizCount }) {
 
                     {/* Display name — truncated if too long */}
                     <p className='text-[13px] font-bold text-[var(--white)] truncate'>
-                        {user.name}
+                        {displayName}
                     </p>
 
                     {/* Quiz count — pluralise if needed */}
                     <p className='text-[11px] text-[var(--white)]/40'>
-                        {quizCount} quiz{quizCount !== 1 ? 'zes' : ''} taken
+                        {count} quiz{count !== 1 ? 'zes' : ''} taken
                     </p>
+
                 </div>
 
             </div>

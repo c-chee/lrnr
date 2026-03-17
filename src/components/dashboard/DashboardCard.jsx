@@ -19,7 +19,7 @@ const base =
     one: 'bg-[var(--card-one)] text-[var(--card-text)]',
     two: 'bg-[var(--card-two)] text-[var(--card-text)]',
     three: 'bg-[var(--card-three)] text-[var(--white)]',
-    four: '[var(--card-four)] text-[var(--white)]'
+    four: 'bg-[var(--card-four)] text-[var(--white)]'
   };
 
   const clickable = onClick

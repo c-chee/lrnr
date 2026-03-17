@@ -28,17 +28,25 @@ export default function PillButton({
             hover:bg-transparent
             hover:text-[var(--button-bg-secondary)]
         `,
-        // No theme - For light bg only
+        // No theme - For light bg only - Dark Green
         tertiary: `
             border-[var(--button-bg-tertiary)]
             bg-[var(--button-bg-tertiary)]
             text-[var(--white)]
             hover:bg-transparent
             hover:text-[var(--button-bg-tertiary)]
+        `,
+        // No theme - For light bg only - purple Green
+        four: `
+            border-[var(--midnight-violet)]
+            bg-[var(--midnight-violet)]
+            text-[var(--white)]
+            hover:bg-transparent
+            hover:text-[var(--midnight-violet)]
         `
     };
 
-    // Base style if vriant is not set
+    // Base style if variant is not set
     const baseStyles = `
         inline-flex items-center justify-center
         px-[12px] py-[2px] md:px-[15px] md:py-[4px]

@@ -16,7 +16,7 @@ function getUserIdFromCookie(req) {
   }
 }
 
-// GET /api/quiz -> return saved prompts for logged-in user
+// GET /api/quiz -> return quiz history for logged-in user
 export async function GET(req) {
   try {
     const userId = getUserIdFromCookie(req);
@@ -25,15 +25,15 @@ export async function GET(req) {
     }
 
     const [rows] = await pool.query(
-      `SELECT id, topic, level, num_questions, question_style, created_at
-       FROM quiz_prompts
+      `SELECT id, topic, difficulty, style, title, description, questions, created_at
+       FROM quizzes
        WHERE user_id = ?
        ORDER BY created_at DESC
        LIMIT 50`,
       [userId]
     );
 
-    return NextResponse.json({ prompts: rows }, { status: 200 });
+    return NextResponse.json({ quizzes: rows }, { status: 200 });
   } catch (error) {
     console.error("GET /api/quiz error:", error);
     return NextResponse.json(

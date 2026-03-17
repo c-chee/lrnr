@@ -42,7 +42,7 @@ export default function QuizCards({ questions = [], onRestart }) {
 
     if (!questions.length) {
         return (
-            <div className="text-center text-gray-500">
+            <div className='text-center text-gray-500'>
                 No quiz questions available
             </div>
         );
@@ -51,28 +51,28 @@ export default function QuizCards({ questions = [], onRestart }) {
     // Results
     if (showResults) {
         return (
-            <div className='w-full max-w-2xl bg-white shadow-lg rounded-2xl p-8 text-center'>
+            <div className='w-full max-w-2xl bg-white text-[var(--midnight-violet)] shadow-lg rounded-2xl p-8 text-center'>
                 <h2 className='text-2xl font-bold mb-4'>Quiz Complete!</h2>
-                <p className="text-lg mb-6">
+                <p className='text-lg mb-6'>
                     You scored {score} out of {questions.length}
                 </p>
-                <div className="text-left space-y-4">
+                <div className='text-left space-y-4'>
                     {questions.map((q, i) => (
-                        <div key={i} className="border-b pb-3">
-                            <p className="font-semibold">{q.question}</p>
+                        <div key={i} className='border-b pb-3'>
+                            <p className='font-semibold'>{q.question}</p>
 
                             <p>
-                                Your answer:{" "}
-                                <span className={answers[i] === q.answer ? "text-green-600" : "text-red-600"}>
+                                Your answer:{' '}
+                                <span className={answers[i] === q.answer ? 'text-green-600' : 'text-red-600'}>
                                     {answers[i]}
                                 </span>
                             </p>
                             {answers[i] !== q.answer && (
-                                <p className="text-green-600">
+                                <p className='text-green-600'>
                                     Correct answer: {q.answer}
                                 </p>
                             )}
-                            <p className="text-sm text-gray-600 mt-1">
+                            <p className='text-sm text-gray-600 mt-1'>
                                 {q.explanation}
                             </p>
                         </div>
@@ -80,7 +80,11 @@ export default function QuizCards({ questions = [], onRestart }) {
                         <div className='flex justify-center mt-8'>
                             <PillButton
                             onClick={onRestart}
+<<<<<<< mc-backend
                             variant='tertiary'
+=======
+                            variant='four'
+>>>>>>> main
                             >
                                 Start a New Quiz
                             </PillButton>
@@ -91,20 +95,24 @@ export default function QuizCards({ questions = [], onRestart }) {
     }
 
     return (
-        <div className="w-full max-w-2xl bg-white shadow-lg rounded-2xl p-8">
+        <div className='w-full max-w-2xl bg-white text-[var(--midnight-violet)] shadow-lg rounded-2xl p-8'>
 
             {/* Question counter */}
-            <div className="text-sm text-gray-500 mb-2">
+            <div className='text-sm text-gray-500 mb-2'>
                 Question {currentIndex + 1} of {questions.length}
             </div>
 
             {/* Question */}
+<<<<<<< mc-backend
             <h2 className="text-xl font-semibold mb-6 text-[#415d5a]">
+=======
+            <h2 className='text-xl font-semibold mb-6'>
+>>>>>>> main
                 {currentQuestion.question}
             </h2>
 
             {/* Options */}
-            <div className="flex flex-col gap-3">
+            <div className='flex flex-col gap-3'>
                 {currentQuestion.options.map((option, index) => (
                     <button
                         key={index}
@@ -121,14 +129,18 @@ export default function QuizCards({ questions = [], onRestart }) {
             </div>
 
             {/* Next button */}
-            <div className="flex justify-end mt-6">
+            <div className='flex justify-end mt-6'>
                 <PillButton
                     onClick={handleNext}
                     disabled={!selectedAnswer}
+<<<<<<< mc-backend
                     variant="tertiary"
+=======
+                    variant='tertiary'
+>>>>>>> main
                 >
-            {currentIndex === questions.length - 1 ? "Finish Quiz" : "Next Question"}
-                </PillButton>
+            {currentIndex === questions.length - 1 ? 'Finish Quiz' : 'Next Question'}
+                </PillButton >
             </div>
 
         </div>

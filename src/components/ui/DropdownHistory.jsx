@@ -17,8 +17,10 @@ export default function DropdownHistory({
     const [isFocused, setIsFocused] = useState(false);
 
     // Filter history to match current input, show last 5
-    const filtered = history
-        .filter(item => item.toLowerCase().includes(value.toLowerCase()))
+    const searchValue = (value || '').toLowerCase();
+
+    const filtered = (history || [])
+        .filter(item => (item || '').toLowerCase().includes(searchValue))
         .slice(0, 5);
 
     function handleHistorySelect(item) {
