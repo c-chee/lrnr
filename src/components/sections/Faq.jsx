@@ -31,13 +31,13 @@ export default function FAQPage() {
   }
 
   return (
-    <main className="min-h-[70vh] bg-[var(--bg)] px-6 py-20">
+    <main className=" bg-[var(--bg)] px-6 pt-20  pb-40">
       <div className="mx-auto w-full max-w-4xl">
         {/* Title */}
         <h1
           className={[
             cormorant.className,
-            "text-center text-4xl md:text-6xl font-light tracking-tight",
+            "text-center text-4xl md:text-6xl font-light tracking-tight text-[35px] sm:text-[45px] md:text-[57px] lg:text-[50px]",
             "text-[var(--text-color)]",
           ].join(" ")}
         >
@@ -54,7 +54,7 @@ export default function FAQPage() {
                 <button
                   type="button"
                   onClick={() => toggle(i)}
-                  className="w-full flex items-center justify-between text-left"
+                  className="w-full flex items-center justify-between text-left cursor-pointer"
                   aria-expanded={isOpen}
                 >
                   <span className="text-xl md:text-2xl text-[var(--text-color)]/60 group-hover:text-[var(--highlight)] transition">

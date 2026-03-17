@@ -73,7 +73,7 @@ The application is built using **Next.js**, with a **Railway-hosted database** f
 - Tailwind
 
 ### Backend / APIs
-- OpenAI API – AI quiz generation
+- Hugging Face API – AI quiz generation
 
 ### Database
 - Railway – hosted database for storing user accounts and history

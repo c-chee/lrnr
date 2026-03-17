@@ -127,6 +127,8 @@ export default function LoginForm() {
                 <p className="text-red-500 text-sm">{errors.general}</p>
             )}
 
+            <p>Forget password? </p>
+
             <Button
                 type='submit'
                 className='max-w-[5em]'
