@@ -39,10 +39,6 @@ The application is built using **Next.js**, with a **Railway-hosted database** f
   - Choose topic, difficulty level, number of questions (1–20), and question style
   - Quizzes are generated dynamically using the OpenAI API
 
-- **Guest Mode**
-  - Generate quizzes without creating an account
-  - Allows quick and easy access to the quiz generator
-
 - **User Accounts**
   - Save quiz prompt history
   - Regenerate quizzes from previous prompts
