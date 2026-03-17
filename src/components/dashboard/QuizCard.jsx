@@ -99,11 +99,7 @@ export default function QuizCards({ questions = [], onRestart }) {
             </div>
 
             {/* Question */}
-<<<<<<< mc-backend
-            <h2 className="text-xl font-semibold mb-6 text-[#415d5a]">
-=======
             <h2 className='text-xl font-semibold mb-6'>
->>>>>>> main
                 {currentQuestion.question}
             </h2>
 
@@ -129,11 +125,7 @@ export default function QuizCards({ questions = [], onRestart }) {
                 <PillButton
                     onClick={handleNext}
                     disabled={!selectedAnswer}
-<<<<<<< mc-backend
-                    variant="tertiary"
-=======
                     variant='tertiary'
->>>>>>> main
                 >
             {currentIndex === questions.length - 1 ? 'Finish Quiz' : 'Next Question'}
                 </PillButton >
