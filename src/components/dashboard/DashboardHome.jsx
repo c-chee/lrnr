@@ -2,6 +2,7 @@
 
 // === Imports ===
 import { useState } from 'react';
+import { useEffect } from 'react';
 import { forbidden, useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 
@@ -12,7 +13,7 @@ import DashboardCard from '@/components/dashboard/DashboardCard';
 import QuizCards from './QuizCard';
 
 // === Mock Examples ===
-const EXAMPLE_USER = { name: 'John' };
+// const EXAMPLE_USER = { name: 'John' };
 
 /** (Used for testing)
 const EXAMPLE_HIST = {
@@ -39,7 +40,11 @@ export default function DashboardHome() {
     const [generatedQuestions, setGeneratedQuestions] = useState([]);
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [formValues, setFormValues] = useState(EMPTY_FORM);
-    const [user, setUser] = useState(EXAMPLE_USER);
+
+
+    const [user, setUser] = useState(null);
+    const [loadingUser, setLoadingUser] = useState(true);
+
     const [history, setHistory] = useState({ topics: [], styles: [], quizzes: [] });
     const [loading, setLoading] = useState(false); // For submit loading
     
@@ -50,6 +55,26 @@ export default function DashboardHome() {
     // -- Data --
     // const user = EXAMPLE_USER;
     // const history = EXAMPLE_HIST;
+
+    // -- Effects --
+    useEffect(() => {
+        async function fetchUser() {
+            try {
+                const res = await fetch('/api/auth/login');
+                const data = await res.json();
+
+                if (data.user) {
+                    setUser(data.user);
+                }
+            } catch (err) {
+                console.error('Failed to fetch user:', err);
+            } finally {
+                setLoadingUser(false);
+            }
+        }
+
+        fetchUser();
+    }, []);
 
     // -- Handlers --
     function handleCardSelect(quizId, values) {
@@ -71,13 +96,13 @@ export default function DashboardHome() {
     async function handleFormSubmit(formData) {
         setLoading(true);
         try {
+            if (!user) return; // prevent submission if user not loaded
+
             const res = await fetch('/api/quiz/generate', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },  
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    userId: user?.id || 1, //fix
+                    userId: user.id,
                     topic: formData.topic,
                     difficulty: formData.level,
                     numQuestions: formData.count,
@@ -164,19 +189,27 @@ export default function DashboardHome() {
                 {showDashboard ? (
                     <div className='grid grid-rows-3 sm:grid-rows-2 sm:grid-cols-2 gap-6 w-full max-w-4xl'>
 
-                        <DashboardCard
-                            title='Streak'
-                            subtitle='Login everyday to continue the streak.'
-                            number={7}
-                            variant='one'
-                        />
-
-                        <DashboardCard
-                            title='Points'
-                            subtitle='Complete more quizes to earn more points.'
-                            number={1200}
-                            variant='two'
-                        />
+                        {!loadingUser && user ? (
+                            <>
+                            <DashboardCard
+                                title="Streak"
+                                subtitle="Login everyday to continue the streak."
+                                number={user.streak ?? 0}
+                                variant="one"
+                            />
+                            <DashboardCard
+                                title="Points"
+                                subtitle="Complete more quizzes to earn points."
+                                number={user.points ?? 0}
+                                variant="two"
+                            />
+                            </>
+                        ) : (
+                            <>
+                                <DashboardCard title="Streak" subtitle="Loading..." number={0} variant="one" />
+                                <DashboardCard title="Points" subtitle="Loading..." number={0} variant="two" />
+                            </>
+                        )}
 
                         <div className='sm:col-span-2'>
                             <DashboardCard
