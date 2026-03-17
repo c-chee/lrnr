@@ -74,11 +74,25 @@ STRICT RULES:
         JSON.stringify(quiz.questions),
       ],
     );
+    
+    // Give user points for creating a quiz
+    await db.execute(
+      `UPDATE users SET points = points + 200 WHERE id = ?`,
+      [body.userId]
+    );
+    // Get updated points
+    const [rows] = await db.execute(
+      `SELECT points FROM users WHERE id = ?`,
+      [body.userId]
+    );
+
+    const points = rows[0].points;
 
     return NextResponse.json({
       success: true,
       quizId: result.insertId,
       quiz,
+      points
     });
   } catch (error) {
     console.error("Quiz generation error:", error);

@@ -37,6 +37,7 @@ export default function DashboardHome() {
   // -- States --
     const router = useRouter();
     
+    const [points, setPoints] = useState(0);
     const [activeQuizId, setActiveQuizId] = useState(null);
     const [generatedQuestions, setGeneratedQuestions] = useState([]);
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -141,6 +142,11 @@ export default function DashboardHome() {
                     setGeneratedQuestions(questions);
                 } else {
                     console.error("No questions returned from AI");
+                }
+
+                // Update points if API returned them
+                if (data.points !== undefined) {
+                    setPoints(data.points);
                 }
             }
 

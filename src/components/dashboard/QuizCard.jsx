@@ -111,8 +111,8 @@ export default function QuizCards({ questions = [], onRestart }) {
                         onClick={() => handleSelect(option)}
                         className={`p-3 rounded-lg border text-left transition
                             ${selectedAnswer === option
-                                ? 'border-[var(--accent-color)] bg-[var(--accent-color)]/10'
-                                : 'border-gray-300 hover:border-[var(--accent-color)]'
+                                ? 'border-[var(--accent-color)] bg-[var(--accent-color)]/10]'
+                                : 'border-gray-300 hover:border-[var(--accent-color)] text-[#415d5a]'
                             }`}
                     >
                         {option}
