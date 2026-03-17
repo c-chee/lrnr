@@ -11,6 +11,7 @@ import DashboardTopBar from '@/components/dashboard/DashboardTopBar';
 import QuizFormCard from '@/components/dashboard/QuizFormCard';
 import DashboardCard from '@/components/dashboard/DashboardCard';
 import QuizCards from './QuizCard';
+import QuizLoadingCard from './QuizLoadingCard';
 
 // === Mock Examples ===
 // const EXAMPLE_USER = { name: 'John' };
@@ -112,6 +113,8 @@ export default function DashboardHome() {
 
     // Handler to submit a quiz form to DB
     async function handleFormSubmit(formData) {
+        if (loading) return; // prevent duplicate submit
+
         setLoading(true);
         try {
             if (!user) return; // prevent submission if user not loaded
@@ -258,7 +261,10 @@ export default function DashboardHome() {
                             ← Back to Dashboard
                         </button>
 
-                    {generatedQuestions.length === 0 ? (
+                    
+                    {loading ? (
+                        <QuizLoadingCard />
+                    ) : generatedQuestions.length === 0 ? (
                         <QuizFormCard
                             user={user}
                             history={history}
@@ -272,8 +278,9 @@ export default function DashboardHome() {
                         <QuizCards
                             questions={generatedQuestions}
                             onRestart={() => setGeneratedQuestions([])}
-                            />
-                        )}
+                        />
+                    )}
+                    
                     </div>
                 )
                 }

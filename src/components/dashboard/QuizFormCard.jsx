@@ -10,6 +10,7 @@ export default function QuizFormCard({
     onFormChange,
     onFormSubmit,
     hasActiveQuiz,
+    loading,
 }) {
     return (
         <div className='
@@ -38,6 +39,7 @@ export default function QuizFormCard({
                 formValues={formValues}
                 onFormChange={onFormChange}
                 onFormSubmit={onFormSubmit}
+                loading={loading}
             />
         </div>
     );
