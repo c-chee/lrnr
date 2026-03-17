@@ -80,7 +80,7 @@ export default function QuizCards({ questions = [], onRestart }) {
                         <div className='flex justify-center mt-8'>
                             <PillButton
                             onClick={onRestart}
-                            variant='primary'
+                            variant='tertiary'
                             >
                                 Start a New Quiz
                             </PillButton>
@@ -99,7 +99,7 @@ export default function QuizCards({ questions = [], onRestart }) {
             </div>
 
             {/* Question */}
-            <h2 className="text-xl font-semibold mb-6">
+            <h2 className="text-xl font-semibold mb-6 text-[#415d5a]">
                 {currentQuestion.question}
             </h2>
 
@@ -111,8 +111,8 @@ export default function QuizCards({ questions = [], onRestart }) {
                         onClick={() => handleSelect(option)}
                         className={`p-3 rounded-lg border text-left transition
                             ${selectedAnswer === option
-                                ? 'border-[var(--accent-color)] bg-[var(--accent-color)]/10'
-                                : 'border-gray-300 hover:border-[var(--accent-color)]'
+                                ? 'border-[var(--accent-color)] bg-[var(--accent-color)]/10]'
+                                : 'border-gray-300 hover:border-[var(--accent-color)] text-[#415d5a]'
                             }`}
                     >
                         {option}
@@ -125,7 +125,7 @@ export default function QuizCards({ questions = [], onRestart }) {
                 <PillButton
                     onClick={handleNext}
                     disabled={!selectedAnswer}
-                    variant="secondary"
+                    variant="tertiary"
                 >
             {currentIndex === questions.length - 1 ? "Finish Quiz" : "Next Question"}
                 </PillButton>
